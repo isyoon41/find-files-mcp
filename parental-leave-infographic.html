@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>육아휴직 지원금 안내 인포그래픽</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+        
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+            line-height: 1.4;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            padding-bottom: 30px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2563EB, #1e40af);
+            color: white;
+            padding: 30px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            font-weight: 700;
+            width: 70%;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-right {
+            text-align: right;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 20px;
+        }
+        
+        .column {
+            width: 33.33%;
+            padding: 0 15px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(to bottom, #2563EB, #3b82f6);
+        }
+        
+        .section-title {
+            color: #1e40af;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .subtitle {
+            color: #475569;
+            font-size: 16px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .icon {
+            background-color: #e0e7ff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2563EB;
+            font-size: 16px;
+        }
+        
+        ul {
+            list-style-type: none;
+            margin-bottom: 20px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        li::before {
+            content: '•';
+            position: absolute;
+            left: 10px;
+            color: #2563EB;
+            font-weight: bold;
+        }
+        
+        .highlight {
+            font-weight: 500;
+            background: linear-gradient(180deg, rgba(255,255,255,0) 65%, rgba(37, 99, 235, 0.2) 65%);
+            padding: 0 2px;
+        }
+        
+        .info-box {
+            background-color: #f1f5f9;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            position: relative;
+        }
+        
+        .info-box::before {
+            content: '💡';
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            background-color: #2563EB;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        
+        .priority-high {
+            color: #ef4444;
+            font-weight: 500;
+        }
+        
+        .priority-medium {
+            color: #f59e0b;
+            font-weight: 500;
+        }
+        
+        .priority-low {
+            color: #10b981;
+            font-weight: 500;
+        }
+        
+        .timeline {
+            display: flex;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #e2e8f0;
+            z-index: 1;
+        }
+        
+        .timeline-item {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            padding-top: 30px;
+        }
+        
+        .timeline-dot {
+            width: 20px;
+            height: 20px;
+            background-color: #2563EB;
+            border-radius: 50%;
+            margin: 0 auto;
+            margin-bottom: 10px;
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .timeline-content {
+            background-color: white;
+            border-radius: 8px;
+            padding: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .table th, .table td {
+            border: 1px solid #e2e8f0;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        .table th {
+            background-color: #f1f5f9;
+            color: #1e40af;
+            font-weight: 500;
+        }
+        
+        .table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        
+        .arrow {
+            position: relative;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .arrow::before {
+            content: '';
+            width: 30px;
+            height: 30px;
+            background-color: #2563EB;
+            clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+        }
+        
+        .note {
+            font-size: 12px;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 10px;
+        }
+        
+        .money-box {
+            border: 2px dashed #2563EB;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .money-title {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: white;
+            padding: 0 10px;
+            color: #2563EB;
+            font-weight: 500;
+        }
+        
+        .money-amount {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e40af;
+            margin: 10px 0;
+        }
+        
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .summary-table th, .summary-table td {
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .summary-table th {
+            background: linear-gradient(to right, #2563EB, #3b82f6);
+            color: white;
+            font-weight: 500;
+        }
+        
+        .summary-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        
+        .summary-table tr:last-child {
+            background-color: #e0e7ff;
+            font-weight: 700;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-right: 5px;
+        }
+        
+        .badge-blue {
+            background-color: #dbeafe;
+            color: #2563EB;
+        }
+        
+        .badge-gray {
+            background-color: #f1f5f9;
+            color: #475569;
+        }
+        
+        .connect-line {
+            position: relative;
+        }
+        
+        .connect-line::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 30px;
+            background-color: #cbd5e1;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .reminder-list {
+            background-color: #fffbeb;
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 4px solid #f59e0b;
+            margin: 20px 0;
+        }
+        
+        .reminder-list h3 {
+            color: #b45309;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .reminder-list li::before {
+            content: '⚠️';
+            color: #f59e0b;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #64748b;
+            font-size: 14px;
+            margin-top: 30px;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .full-width {
+            width: 100%;
+            padding: 0 15px;
+            margin-bottom: 30px;
+        }
+        
+        .blob {
+            position: absolute;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .blob-1 {
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: #2563EB;
+            border-radius: 64% 36% 43% 57% / 40% 51% 49% 60%;
+        }
+        
+        .card-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .column {
+                width: 100%;
+            }
+            
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .header h1 {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1>육아휴직지원금 &amp; 대체인력지원금 안내</h1>
+            <div class="header-right">
+                <p>2025년 5월 14일</p>
+                <p>소규모 사업장 지원 가이드</p>
+            </div>
+        </div>
+        
+        <!-- Content Section -->
+        <div class="content">
+            <!-- Column 1: 육아휴직 신청 요건 -->
+            <div class="column">
+                <div class="card">
+                    <div class="blob blob-1"></div>
+                    <div class="card-content">
+                        <div class="section-title">
+                            <div class="icon">1</div>
+                            <span>육아휴직 신청 요건 및 기한</span>
+                        </div>
+                        
+                        <div class="subtitle">📋 육아휴직 신청 자격 (여성근로자 기준)</div>
+                        <ul>
+                            <li>고용보험에 가입된 <span class="highlight">피보험자</span>여야 함</li>
+                            <li><span class="highlight">육아휴직 개시일 기준으로 6개월 이상</span> 계속 근무했어야 함</li>
+                            <li><span class="highlight">자녀가 만 8세 이하 또는 초등학교 2학년 이하</span>여야 함 (→ 돌이 지난 자녀여도 신청 가능)</li>
+                        </ul>
+                        
+                        <div class="subtitle">⏰ 신청 기한: 꼭 지켜야 할 시점</div>
+                        <div class="info-box">
+                            <p>근로자는 <span class="priority-high">육아휴직을 시작하기 전 최소 '30일 전까지'</span> 사업주에게 신청서를 제출해야 합니다.</p>
+                            <p>이 규정은 <span class="highlight">[고용보험법 시행령 제95조 제1항]</span>에 근거합니다.</p>
+                        </div>
+                        
+                        <div class="subtitle">❗ 만약 30일 전에 신청하지 않으면?</div>
+                        <p>사업주는 육아휴직을 '허용하지 않을 수' 있습니다. 즉, <span class="priority-high">신청이 늦었다는 이유로 거부가 가능합니다.</span> (단, 허용해도 법적으로 문제는 없음)</p>
+                        
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <span class="badge badge-blue">Step 1</span>
+                                    <p>신청서 제출<br>(30일 전)</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <span class="badge badge-blue">Step 2</span>
+                                    <p>심사 및 승인</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-dot"></div>
+                                <div class="timeline-content">
+                                    <span class="badge badge-blue">Step 3</span>
+                                    <p>육아휴직 시작</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Column 2: 육아휴직지원금 -->
+            <div class="column">
+                <div class="card">
+                    <div class="blob blob-1"></div>
+                    <div class="card-content">
+                        <div class="section-title">
+                            <div class="icon">2</div>
+                            <span>육아휴직지원금 (사업주 지원)</span>
+                        </div>
+                        
+                        <div class="subtitle">🏢 전제 조건</div>
+                        <ul>
+                            <li>육아휴직을 <span class="highlight">30일 이상 부여한 사업주</span>가 받을 수 있습니다.</li>
+                            <li>중소기업(우선지원대상기업)에 해당해야 하며, <span class="highlight">1인 사업장도 가능</span>합니다.</li>
+                        </ul>
+                        
+                        <div class="subtitle">💸 복귀 여부와 관계없이 먼저 받을 수 있는 돈</div>
+                        <table class="table">
+                            <tr>
+                                <th>구분</th>
+                                <th>내용</th>
+                            </tr>
+                            <tr>
+                                <td>신청 시점</td>
+                                <td>직원이 육아휴직을 <span class="highlight">시작한 후 1개월이 지난 시점부터</span> 가능</td>
+                            </tr>
+                            <tr>
+                                <td>신청 단위</td>
+                                <td><span class="highlight">3개월 단위</span>로 나누어 신청 가능</td>
+                            </tr>
+                            <tr>
+                                <td>금액</td>
+                                <td><span class="priority-medium">월 30만 원 × 3개월 = 90만 원 중 절반인 45만 원</span> 먼저 지급</td>
+                            </tr>
+                            <tr>
+                                <td>방법</td>
+                                <td>고용노동부 고용24 시스템 또는 고용센터를 통해 신청</td>
+                            </tr>
+                        </table>
+                        
+                        <div class="note">※ <span class="highlight">만 12개월 이하 자녀</span>가 아닌 경우, 특례(200만 원)는 해당되지 않음</div>
+                        <div class="note">※ 남성 근로자가 아니라서 '1~3호 인센티브 10만 원'도 해당 없음</div>
+                        
+                        <div class="subtitle">💰 복귀한 후 받을 수 있는 나머지 돈</div>
+                        <table class="table">
+                            <tr>
+                                <th>구분</th>
+                                <th>내용</th>
+                            </tr>
+                            <tr>
+                                <td>조건</td>
+                                <td>직원이 복귀 후 <span class="highlight">6개월 이상 계속 근무</span>해야 함</td>
+                            </tr>
+                            <tr>
+                                <td>지급 시점</td>
+                                <td>6개월 이상 고용 유지가 확인된 시점에 <span class="highlight">일시금으로 지급</span></td>
+                            </tr>
+                            <tr>
+                                <td>금액</td>
+                                <td>앞에서 못 받은 <span class="priority-medium">잔여 45만 원</span> 지급</td>
+                            </tr>
+                        </table>
+                        
+                        <div class="money-box">
+                            <div class="money-title">육아휴직지원금 요약</div>
+                            <p>총 지원 가능 금액</p>
+                            <div class="money-amount">90만 원</div>
+                            <p>지급 방식: <span class="highlight">45만 원은 중간에 먼저</span>, <span class="highlight">나머지 45만 원은 복귀 후</span> 지급</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Column 3: 대체인력지원금 -->
+            <div class="column">
+                <div class="card">
+                    <div class="blob blob-1"></div>
+                    <div class="card-content">
+                        <div class="section-title">
+                            <div class="icon">3</div>
+                            <span>대체인력지원금 (사업주 지원)</span>
+                        </div>
+                        
+                        <div class="subtitle">🏢 전제 조건</div>
+                        <ul>
+                            <li>육아휴직으로 인해 <span class="highlight">새로운 직원을 채용하거나 파견을 사용한 경우</span></li>
+                            <li><span class="highlight">그 대체인력을 30일 이상 고용</span>해야 함</li>
+                            <li>고용된 사람이 <span class="highlight">실제 임금을 받았음</span>을 증빙할 수 있어야 함</li>
+                        </ul>
+                        
+                        <div class="subtitle">💸 복귀와 상관없이 받을 수 있는 돈</div>
+                        <table class="table">
+                            <tr>
+                                <th>구분</th>
+                                <th>내용</th>
+                            </tr>
+                            <tr>
+                                <td>신청 시점</td>
+                                <td>대체인력 고용 후 <span class="highlight">30일 경과</span> 시점부터 신청 가능</td>
+                            </tr>
+                            <tr>
+                                <td>신청 단위</td>
+                                <td><span class="highlight">3개월 단위</span>로 신청 가능</td>
+                            </tr>
+                            <tr>
+                                <td>금액</td>
+                                <td>월 최대 <span class="priority-medium">120만 원 × 3개월 = 360만 원 중 절반(180만 원)</span> 지급 가능</td>
+                            </tr>
+                        </table>
+                        
+                        <div class="info-box">
+                            <p>※ 단, 실제 지급한 급여의 <span class="highlight">80% 한도 내</span>에서 지급됨</p>
+                            <p>예: 대체인력에게 월 100만 원을 줬다면 → 100만 × 80% = 80만 원 (지원 상한은 120만 원)</p>
+                        </div>
+                        
+                        <div class="subtitle">💰 복귀한 후 받을 수 있는 나머지 돈</div>
+                        <table class="table">
+                            <tr>
+                                <th>구분</th>
+                                <th>내용</th>
+                            </tr>
+                            <tr>
+                                <td>조건</td>
+                                <td>육아휴직을 사용한 근로자가 <span class="highlight">복귀 후 1개월 이상 근무</span>해야 함</td>
+                            </tr>
+                            <tr>
+                                <td>지급 시점</td>
+                                <td>위 조건 충족 후 <span class="priority-medium">잔여분 180만 원</span>을 일시금으로 지급</td>
+                            </tr>
+                        </table>
+                        
+                        <div class="money-box">
+                            <div class="money-title">대체인력지원금 요약</div>
+                            <p>총 지원 가능 금액</p>
+                            <div class="money-amount">360만 원</div>
+                            <p>지급 방식: <span class="highlight">180만 원은 먼저</span>, <span class="highlight">180만 원은 복귀 후</span> 지급</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Full width: 전체 지원금 요약 -->
+            <div class="full-width">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="section-title">
+                            <div class="icon">4</div>
+                            <span>전체 지원금 요약</span>
+                        </div>
+                        
+                        <table class="summary-table">
+                            <tr>
+                                <th>구분</th>
+                                <th>중간 지급</th>
+                                <th>복귀 후 지급</th>
+                                <th>총 지급 가능액</th>
+                            </tr>
+                            <tr>
+                                <td>육아휴직지원금</td>
+                                <td>45만 원</td>
+                                <td>45만 원</td>
+                                <td><strong>90만 원</strong></td>
+                            </tr>
+                            <tr>
+                                <td>대체인력지원금</td>
+                                <td>180만 원</td>
+                                <td>180만 원</td>
+                                <td><strong>360만 원</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>총합</strong></td>
+                                <td><strong>225만 원</strong></td>
+                                <td><strong>225만 원</strong></td>
+                                <td><strong class="priority-high">450만 원</strong></td>
+                            </tr>
+                        </table>
+                        
+                        <div class="note">※ 단, 위 금액은 전일제 근로자를 채용하고 임금이 충분히 지급되었을 경우 기준입니다.</div>
+                        <div class="note">※ 대체인력지원금은 고용된 사람의 실제 급여와 고용형태에 따라 금액이 줄어들 수 있습니다.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Full width: 꼭 기억해야 할 점 -->
+            <div class="full-width">
+                <div class="reminder-list">
+                    <h3>
+                        <div class="icon" style="background-color: #f59e0b;">5</div>
+                        <span>꼭 기억해야 할 점</span>
+                    </h3>
+                    <ul>
+                        <li>근로자는 <span class="priority-high">30일 전까지</span> 육아휴직을 신청해야 하고, 이를 지키지 않으면 사업주는 허용하지 않아도 됩니다.</li>
+                        <li>사업주는 <span class="priority-high">육아휴직을 30일 이상 부여</span>하고, 복귀 후 일정 기간 고용을 유지해야 <span class="priority-medium">정부로부터 모든 지원금을 받을 수 있습니다</span>.</li>
+                        <li>모든 지원금은 <span class="priority-high">휴직 종료일로부터 12개월 이내</span>에 신청해야 합니다. 이 기한을 넘기면 <span class="priority-high">지급받을 수 없습니다.</span></li>
+                    </ul>
+                    <p style="margin-top: 15px;">이처럼 소규모 사업장(1인 사업주 + 여성근로자 1명)에서도 육아휴직 사용이 가능하고, 정부는 사업주의 부담을 덜어주기 위해 다양한 지원금을 운영하고 있습니다. 조건만 충족하면 <span class="priority-high">총 450만 원까지</span> 받을 수 있으므로 절차와 기한을 꼭 체크하시고 놓치지 마세요.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2025 (주)위즈덤앤코 - 육아휴직지원금 및 대체인력지원금 안내 인포그래픽</p>
+        </div>
+    </div>
+</body>
+</html>
